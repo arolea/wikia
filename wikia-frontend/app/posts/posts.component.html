@@ -1,0 +1,51 @@
+<div class="col-xs-1 p-a-1">
+    <navigator-component></navigator-component>
+</div>
+
+<div class="col-xs-11 p-a-1">
+
+    <h1 class="p-l-1">Most recent posts</h1>
+
+    <div class="col-xs-12 p-l-1" >
+        <label>Items per page:</label>
+        <select [(ngModel)]="pageSize" (ngModelChange)="update()">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+
+        <label> Content search (press enter to trigger):</label>
+        <input class="form-inline" [(ngModel)]="content" placeholder="Content..." (keyup.enter)="update()"/>
+    </div>
+
+    <div class="p-a-1">
+        <table class="table table-striped table-hover table-bordered p-t-1 p-b-1">
+            <thead class="thead-inverse"><th>Index</th><th>Title</th><th>Date Created</th><th>Operations</th></thead>
+            <tr *ngFor="let item of getPosts(); let i = index;">
+                <td (click)="viewPost(item)">{{i +1}}</td>
+                <td (click)="viewPost(item)">{{item.title}}</td>
+                <td (click)="viewPost(item)" >{{item.dateCreated | date:"longDate" }}</td>
+                <td>
+                    <button *ngIf="canDelete(item)" class="btn btn-primary" (click)="deletePost(item)"> Delete Post </button>
+                    <button *ngIf="canUpdate(item)" class="btn btn-primary" [routerLink]="getUpdateLink(item)"> Edit Post </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="p-l-1">
+        <label>Page index: </label>
+    </div>
+    <div class="p-l-1">
+        <button class="btn btn-primary m-r-1"
+                *ngFor="let currentPage of getPageRange();  let i = index; "
+                [class.active]="i==pageIndex"
+                (click)="updatePageIndex(i)"> {{i}} </button>
+    </div>
+
+    <div class="col-xs-12 p-t-1 p-b-1">
+        <button class="btn btn-primary" routerLink="/posts/create">Create New Post</button>
+    </div>
+
+</div>

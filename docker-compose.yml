@@ -1,0 +1,15 @@
+version: '2'
+# Define services
+services:
+  # Eureka discovery service
+  wikia-rest:
+    image: wikia-rest
+    ports:
+     - "9000:9000"
+    network_mode: "host"
+  # Persistence service
+  wikia-frontend:
+    image: wikia-frontend
+    ports:
+     - "3000:3000"
+    network_mode: "host"

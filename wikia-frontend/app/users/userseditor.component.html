@@ -1,0 +1,36 @@
+<div class="p-a-1">
+    <h1 *ngIf="editing">Edit user</h1>
+    <h1 *ngIf="creating">Create user</h1>
+</div>
+
+<form novalidate #form="ngForm" (ngSubmit)="submitForm(form)" >
+
+    <div class="form-group">
+        <label>Username</label>
+        <input class="form-control" name="username" [(ngModel)]="user.username" required />
+    </div>
+
+    <div *ngIf="creating" class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" name="password" [(ngModel)]="user.password" required />
+    </div>
+
+    <div class="form-group">
+        <label>Is admin</label>
+        <input type="checkbox" class="form-inline" name="isAdmin" [(ngModel)]="isAdmin" />
+    </div>
+
+    <div class="form-group">
+        <label>Is user</label>
+        <input type="checkbox" class="form-inline" name="isUser" [(ngModel)]="isUser" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid || (!isUser && !isAdmin)"> {{editing ? "Save" : "Create"}} </button>
+    </div>
+
+    <div class="form-group">
+        <button type="button" class="btn btn-secondary" routerLink="/users">Cancel</button>
+    </div>
+
+</form>

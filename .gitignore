@@ -1,0 +1,12 @@
+*.iml
+*.class
+.idea/
+
+target/
+
+data/
+
+npm-debug.log
+
+node_modules
+

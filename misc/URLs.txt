@@ -1,0 +1,30 @@
+Backend URLs :
+
+Users:
+
+GET       /wikia/users -> get all users
+GET       /wikia/users/{id} -> get user by id
+POST      /wikia/users -> create new user
+PUT       /wikia/users/{id} -> modify an existing user
+DELETE    /wikia/users/{id} -> delete an existing user
+
+Hypermedia : user entity contains links to delete_self, update_self and get_self
+
+Posts :
+
+GET       /wikia/posts?pageIndex={pageIndex}&pageSize={pageSize}&content={content} -> post summary collection
+GET       /wikia/posts/{id} -> get post by id
+POST      /wikia/posts -> create new post
+PUT       /wikia/posts/{id} -> modify an existing post
+DELETE    /wikia/posts/{id} -> delete an existing post
+
+Hypermedia : post and post summary entities contain links to delete_self, update_self and get_self
+
+Fronted URLs :
+
+Posts :
+
+/posts -> display post summary
+/posts/view/{id} -> display post by id
+/posts/create -> create new post
+/posts/edit/{id} -> edit post by id

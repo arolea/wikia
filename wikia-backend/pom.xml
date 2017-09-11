@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>wikia</artifactId>
+        <groupId>com.learning.wikia</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>wikia-backend</artifactId>
+
+    <packaging>pom</packaging>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>wikia-model</module>
+        <module>wikia-persistence</module>
+        <module>wikia-core</module>
+        <module>wikia-rest</module>
+    </modules>
+
+</project>

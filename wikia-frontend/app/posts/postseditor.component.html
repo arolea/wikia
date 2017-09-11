@@ -1,0 +1,48 @@
+<div class="p-a-1">
+    <h1 *ngIf="editing">Edit post</h1>
+    <h1 *ngIf="viewing">View post</h1>
+    <h1 *ngIf="creating">Create post</h1>
+</div>
+
+<form novalidate #form="ngForm" (ngSubmit)="submitForm(form)" >
+
+    <div class="form-group">
+        <label>Post title</label>
+        <input class="form-control" name="title" [(ngModel)]="post.title" required [disabled]="viewing"/>
+    </div>
+
+    <div class="form-group">
+        <label>Post content</label>
+        <textarea class="form-control" name="content" (change)="post.content = $event.target.value" rows="30" cols="120"
+                  [disabled]="viewing"> {{post.content}} </textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Is visible</label>
+        <input type="checkbox" class="form-inline" name="visible" [(ngModel)]="post.visible" [disabled]="viewing" />
+    </div>
+
+    <div *ngIf="viewing" class="form-group">
+        <label class="form-group">Comments : </label>
+        <div *ngFor="let comment of post.comments;" class="form-group p-l-3"> {{comment.authorName + " says : " + comment.content }} </div>
+    </div>
+
+    <div *ngIf="viewing" class="form-group">
+        <label>New comment</label>
+        <input class="form-control" name="newComment" [(ngModel)]="newComment"/>
+    </div>
+
+    <div class="form-group">
+        <button *ngIf="viewing" class="btn btn-primary" (click)="addCommentToPost()"> Add Comment </button>
+    </div>
+
+    <div class="form-group">
+        <button *ngIf="!viewing" type="submit" class="btn btn-primary"
+                [disabled]="form.invalid"> {{editing ? "Save" : "Create"}} </button>
+    </div>
+
+    <div class="form-group">
+        <button type="button" class="btn btn-secondary" routerLink="/posts">Cancel</button>
+    </div>
+
+</form>

@@ -1,0 +1,29 @@
+<div class="col-xs-1 p-a-1">
+    <navigator-component></navigator-component>
+</div>
+
+<div class="col-xs-11 p-a-1">
+
+    <h1 class="p-l-1">Users</h1>
+
+    <div class="p-a-1">
+        <table class="table table-striped table-hover table-bordered p-t-1 p-b-1">
+            <thead class="thead-inverse"><th>Index</th><th>Name</th><th>Is admin</th><th>Is user</th><th>Operations</th></thead>
+            <tr *ngFor="let item of getUsers(); let i = index;">
+                <td>{{i +1}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.roles.indexOf("ROLE_ADMIN") > -1}}</td>
+                <td>{{item.roles.indexOf("ROLE_USER") > -1}}</td>
+                <td>
+                    <button *ngIf="canDelete(item)" class="btn btn-primary" (click)="deleteUser(item)"> Delete User </button>
+                    <button *ngIf="canUpdate(item)" class="btn btn-primary" [routerLink]="getUpdateLink(item)"> Edit User </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-xs-12 p-t-1 p-b-1">
+        <button class="btn btn-primary" routerLink="/users/create">Create New User</button>
+    </div>
+
+</div>

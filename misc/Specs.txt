@@ -1,0 +1,44 @@
+Specifications for the wikia project.
+
+Views:
+1) Posts view - a table that presents a summary for all the posts visible for the current user.
+1.1) Display post view - a view over a specific post - the content of the post is displayed.
+1.2) Create / Update post view - a view that allows the current user to create / modify a post.
+
+2) Administration view - view over the users and permissions. This should be visible only to admins.
+2.1) Create / Update user view - allows an admin to create or update a user.
+
+The posts view:
+
+    The table displays a summary of posts (title and date created).
+    A user can view all his posts and the public posts of other users.
+    A 'Create' button is present in the top of the view. Upon clicking, the user is moved to the 'Create / Update' view.
+    For the posts for which the current user is also the author, 'Delete' and 'Edit' buttons are present in the last
+    column of the posts table. Upon clicking the 'Edit' button, the user is moved to the 'Create / Update' view.
+    Posts will be sorted by date.
+    Posts will support pagination, with a default page size of 5. A drop down with 'Items per page' allows the user to
+    configure the page size.
+    'Content search' allows the user to query posts based on content.
+
+Display post view:
+
+    Allows the user to view a visible post.
+    The user is able to leave comments to the post. No single comment policy is enforced.
+
+Create / Update post view:
+
+    Allows the user to create a new post or to edit one of his posts.
+    The user is able to manage content, title and comments.
+
+Administration view:
+
+    Allows an admin to manage the available users.
+    A table displays all the available users.
+    A 'Create' button is present in the top of the view. Upon clicking, the admin is moved to the Create / Update
+    user view
+    'Delete' and 'Edit' buttons are present on the last column.
+    Two buttons, 'Admins' and 'Users' are present at the top of the table and support filtering based on rights.
+
+Create / Update user view :
+
+    Allows an admin to create or update users.

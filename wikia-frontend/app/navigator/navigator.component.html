@@ -1,0 +1,11 @@
+<div class="col-xs-1 p-a-0.5">
+    <button class="btn btn-block btn-secondary navigator-button" routerLink="/posts">
+        Posts
+    </button>
+    <button *ngIf="isAdmin()" class="btn btn-block btn-secondary navigator-button" routerLink="/users">
+        Users
+    </button>
+    <button class="btn btn-block btn-secondary navigator-button" (click)="logout()">
+        Logout
+    </button>
+</div>
